@@ -1,0 +1,73 @@
+## Environment Vars
+export set PATH=$PATH:$HOME/.rvm/bin:$HOME/Workspace/Android/android-sdk-linux/tools:/home/luis/Applications/SmartGit/smartgit-3_0_10/bin:$HOME/Apps/mongodb-2.2.0/bin
+export set EDITOR='sublime'
+export set TERM=screen-256color
+
+# Set the MySQL Home environment variable to point to the root directory of the MySQL installation.
+export set MYSQL_HOME=/usr/local/mysql-5.5.28-osx10.6-x86_64
+export set PATH=$PATH:$MYSQL_HOME/bin:~/Apps
+export set DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+
+## Aliases
+alias mysqlstart="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias mysqlstop="/Library/StartupItems/MySQLCOM/MySQLCOM stop"
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gitignore='git update-index --assume-unchanged'
+alias gitunignore='git update-index --no-assume-unchanged'
+
+## Local scripts
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+[[ -s "$HOME/.tmuxifier/init.sh" ]] && source "$HOME/.tmuxifier/init.sh"
+source ~/.git-prompt.sh
+
+## Visual
+if [ -n "$PS1" ]; then
+    PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[1;33m\]\w$(__git_ps1)\[\e[m\] \[\e[1;37m\]\r\n→\[\e[m\] \[\e[0;37m\]'
+fi
+
+#Prompt and prompt colors
+# 30m - Black
+# 31m - Red
+# 32m - Green
+# 33m - Yellow
+# 34m - Blue
+# 35m - Purple
+# 36m - Cyan
+# 37m - White
+# 0 - Normal
+# 1 - Bold
+
+## Helper Functions
+function prompt {
+  local BLACK="\[\033[0;30m\]"
+  local BLACKBOLD="\[\033[1;30m\]"
+  local RED="\[\033[0;31m\]"
+  local REDBOLD="\[\033[1;31m\]"
+  local GREEN="\[\033[0;32m\]"
+  local GREENBOLD="\[\033[1;32m\]"
+  local YELLOW="\[\033[0;33m\]"
+  local YELLOWBOLD="\[\033[1;33m\]"
+  local BLUE="\[\033[0;34m\]"
+  local BLUEBOLD="\[\033[1;34m\]"
+  local PURPLE="\[\033[0;35m\]"
+  local PURPLEBOLD="\[\033[1;35m\]"
+  local CYAN="\[\033[0;36m\]"
+  local CYANBOLD="\[\033[1;36m\]"
+  local WHITE="\[\033[0;37m\]"
+  local WHITEBOLD="\[\033[1;37m\]"
+export PS1="\n$BLACKBOLD \u@\h\[\033[00m\]:$BLUEBOLD\w\[\033[00m\] \\$ "
+}
+#prompt
